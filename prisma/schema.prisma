@@ -1,0 +1,108 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum EmploymentType {
+  FULL_TIME
+  PART_TIME
+  CONTRACT
+  FREELANCE
+}
+
+enum Role {
+  ADMIN
+  USER
+  DEVELOPER
+}
+
+model User {
+  id            String         @id @default(cuid())
+  name          String?
+  email         String         @unique
+  password      String?
+  role          Role           @default(USER)
+  image         String?
+  emailVerified DateTime?
+  accounts      Account[]
+  resumes       Resume[]
+  Notification  Notification[]
+}
+
+model Job {
+  id             String         @id @default(cuid())
+  title          String
+  description    String
+  employmentType EmploymentType
+  isAvailable    Boolean        @default(true)
+  requiredSkills String[]
+  createdAt      DateTime       @default(now())
+  resumes        Resume[]
+}
+
+model Resume {
+  id        String     @id @default(cuid())
+  userId    String
+  jobId     String
+  age       Int
+  gender    String
+  showcases Showcase[] 
+  user      User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  job       Job        @relation(fields: [jobId], references: [id], onDelete: Cascade)
+}
+
+model Showcase {
+  id         String   @id @default(cuid())
+  url        String  
+  resumeId   String   
+  resume     Resume   @relation(fields: [resumeId], references: [id], onDelete: Cascade)
+  createdAt  DateTime @default(now())
+}
+
+
+model Notification {
+  id        String   @id @default(cuid())
+  message   String
+  read      Boolean  @default(false)
+  createdAt DateTime @default(now())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+
+model VerificationCode {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  code      String
+  createdAt DateTime @default(now())
+  expiresAt DateTime
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
