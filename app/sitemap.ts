@@ -10,13 +10,16 @@ async function getShowcases() {
        publishedAt,
        images
      }`;
-  const data = await client.fetch(query);
-  return data;
+  try {
+    return await client.fetch(query);
+  } catch (error) {
+    console.error("Error fetching showcases:", error);
+    return [];
+  }
 }
 
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  async function getBlogs() {
-    const query = `*[_type == "blog"] {
+async function getBlogs() {
+  const query = `*[_type == "blog"] {
            title,
            slug,
            publishedAt,
@@ -29,10 +32,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
            _id,
            body
         }`;
-    const data = await client.fetch(query);
-    return data;
+  try {
+    return await client.fetch(query);
+  } catch (error) {
+    console.error("Error fetching blogs:", error);
+    return [];
   }
+}
 
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const blogs: BlogType[] = await getBlogs();
   const showcases: ShowcaseType[] = await getShowcases();
 
