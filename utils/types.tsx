@@ -1,5 +1,10 @@
 import { Role } from "@prisma/client";
 
+export interface CategoryType {
+  _id: string;
+  name: string;
+}
+
 export interface BlogType {
   title: string;
   slug: { current: string };
@@ -9,6 +14,7 @@ export interface BlogType {
   image: any;
   body: any;
   _id: string;
+  categories: CategoryType[]; // Array of categories
 }
 
 export interface User {

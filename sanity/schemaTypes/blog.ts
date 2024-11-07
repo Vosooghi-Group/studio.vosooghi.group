@@ -4,7 +4,6 @@ export const blog = {
   name: "blog",
   title: "Blog",
   type: "document",
-
   fields: [
     {
       name: "title",
@@ -29,7 +28,7 @@ export const blog = {
       name: "excerpt",
       title: "Excerpt",
       type: "text",
-      validation: (Rule: Rule) => Rule.max(300).error("max 300 characters"),
+      validation: (Rule: Rule) => Rule.max(300).error("Max 300 characters"),
     },
     {
       name: "body",
@@ -59,6 +58,13 @@ export const blog = {
       },
       validation: (Rule: Rule) =>
         Rule.required().error("Image is required for blog cards"),
+    },
+    {
+      name: "categories",
+      title: "Categories",
+      type: "array",
+      of: [{ type: "reference", to: [{ type: "category" }] }],
+      validation: (Rule: Rule) => Rule.min(1).error("At least one category is required"),
     },
   ],
 };

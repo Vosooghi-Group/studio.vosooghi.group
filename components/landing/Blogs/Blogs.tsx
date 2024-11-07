@@ -9,13 +9,17 @@ import { StudioButton } from "@/components/StudioButton";
 export const revalidate = 60;
 async function getBlogs() {
   const query = `*[_type == "blog"] {
-  title,
-  slug,
-  publishedAt,
-  author,
-  image,
-  excerpt,
-}`;
+    title,
+    slug,
+    publishedAt,
+    author,
+    image,
+    excerpt,
+    categories[]->{
+      _id,
+      name
+    }
+  }`;
   const data = await client.fetch(query);
   return data;
 }
@@ -31,7 +35,7 @@ export const Blogs = async () => {
             src={BlogTitle}
             alt=""
             width={70}
-              height={70}
+            height={70}
             className="w-[130px] lg:w-[200px]"
           />
           <p className="lg:max-w-[85%] text-neutral-400 leading-6 lg:leading-7 text-sm lg:text-md">
@@ -45,7 +49,7 @@ export const Blogs = async () => {
             classname="bg-neutral-800 text-white w-[120px]"
           />
         </div>
-        <div className="grid grid-cols-1 lg:grid-cols-2 items-center w-full overflow-x-auto overflow-y-hidden  lg:gap-[100px] xl:gap-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 justify-center items-center w-full overflow-x-auto overflow-y-hidden  lg:gap-[100px] xl:gap-10 gap-8">
           {blogs &&
             blogs?.map((blog, idx) => <BlogCard blog={blog} key={idx} />)}
         </div>

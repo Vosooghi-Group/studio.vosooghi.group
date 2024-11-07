@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { links, footerLinks } from "./data";
 import { perspective, slideIn } from "./anim";
 import Link from "next/link";
-import { GoArrowUpLeft } from "react-icons/go";
+import { FaArrowLeft } from "react-icons/fa";
 
 export default function Nav({ toggleMenu }: { toggleMenu: () => void }) {
   const handleToggle = () => {
@@ -32,8 +32,8 @@ export default function Nav({ toggleMenu }: { toggleMenu: () => void }) {
                   className="flex items-center justify-between"
                 >
                   <a className="">{title}</a>
-                  <div className="bg-neutral-900 rounded-lg w-[40px] h-[40px] flex items-center justify-center">
-                    <GoArrowUpLeft size={20} className="text-white" />
+                  <div className="bg-neutral-300 rounded-lg w-[40px] h-[40px] flex items-center justify-center">
+                    <FaArrowLeft size={22} className="text-neutral-950 rotate-45" />
                   </div>
                 </motion.div>
               </Link>
@@ -52,7 +52,7 @@ export default function Nav({ toggleMenu }: { toggleMenu: () => void }) {
                 initial="initial"
                 animate="enter"
                 exit="exit"
-                className="text-neutral-900 rounded-full p-1.5 pl-4 flex items-center justify-between w-full gap-2"
+                className="text-neutral-400 rounded-full p-1.5 pl-4 flex items-center justify-between w-full gap-2"
               >
                 {title}
                 {icon}

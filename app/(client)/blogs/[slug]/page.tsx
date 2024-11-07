@@ -8,7 +8,10 @@ import { Metadata } from "next";
 import React from "react";
 import { BlogCard } from "@/components/blogs/BlogCard";
 import jalaali from "jalaali-js";
-
+import { HiMiniPencilSquare } from "react-icons/hi2";
+import { FaRegCalendarAlt } from "react-icons/fa";
+import { FaHashtag } from "react-icons/fa";
+import { Badge } from "@/components/ui/badge";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -70,6 +73,10 @@ async function getBlog(slug: string) {
         name,
         image
       },
+       categories[]->{
+      _id,
+      name
+    },
       excerpt,
       image,
       _id,
@@ -88,6 +95,10 @@ async function getSimilarBlogs(slug: string) {
       author->{
         name
       },
+        categories[]->{
+      _id,
+      name
+    },
       image,
       excerpt
     }
@@ -110,10 +121,10 @@ const SingleBlogPage = async ({ params }: Params) => {
   return (
     <div className=" max-w-[1500px] 2xl:max-w-[1600px] m-auto ">
       <div className="w-full min-h-screen p-6 sm:p-8 lg:p-10 flex flex-col  gap-10  text-justify ">
-        <div className=" mt-14 text-justify max-w-[1400px] mx-auto">
+        <div className=" mt-10 text-justify max-w-[1400px] mx-auto">
           <div className="flex flex-col gap-5">
             <div className="flex flex-col gap-5">
-              <div className="pb-7  mb-8 ">
+              <div className="pb-3  mb-3 ">
                 <Breadcrumb>
                   <BreadcrumbList>
                     <BreadcrumbItem>
@@ -141,23 +152,47 @@ const SingleBlogPage = async ({ params }: Params) => {
                   <span className="w-[5px] h-[35px] mb-[-6px] bg-[#01C466] rounded-lg"></span>
                   {blog?.title}
                 </h1>
-                <div className="flex items-center gap-2.5">
-                  <Image
-                    src={urlFor(blog.author.image).url()}
-                    alt={blog?.author?.name}
-                    width={50}
-                    height={50}
-                    priority
-                    className="object-cover w-[50px] h-[50px] rounded-full shadow-lg"
-                  />
-                  <div className="flex flex-col gap-[3px]">
-                    <h1 className="text-sm lg:text-lg">{blog?.author?.name}</h1>
-                    <span className="text-xs lg:text-sm text-neutral-600 dark:text-neutral-400">
-                      {publishedAtPersian}
-                    </span>
+                <div className="flex items-center flex-wrap gap-3 lg:gap-5 mb-6">
+                  <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-2">
+                      <HiMiniPencilSquare
+                        size={15}
+                        className="text-neutral-200"
+                      />
+                      <span className="text-md lg:text-lg text-neutral-200">
+                        نویسنده :
+                      </span>
+                    </div>
+                    <h1 className=" text-neutral-200">{blog?.author?.name}</h1>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-2">
+                      <FaRegCalendarAlt
+                        size={15}
+                        className="text-neutral-200"
+                      />
+                      <span className="text-md lg:text-lg text-neutral-200">
+                        تاریخ :
+                      </span>
+                    </div>
+                    <span className="">{publishedAtPersian}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-2">
+                      <FaHashtag className="text-neutral-200" />
+                      <span className="text-md lg:text-lg text-neutral-200">
+                        هشتگ ها :
+                      </span>
+                    </div>
+                    <div className="flex items-center justify-start max-w-[200px] overflow-x-auto gap-1">
+                      {blog.categories?.map((category, index) => (
+                        <Badge key={index} variant="secondary">
+                          {category.name}
+                        </Badge>
+                      ))}
+                    </div>
                   </div>
                 </div>
-                <p className=" leading-7 lg:leading-8">{blog?.excerpt}</p>
               </div>
               <Image
                 src={urlFor(blog.image).url()}
@@ -176,7 +211,7 @@ const SingleBlogPage = async ({ params }: Params) => {
             </div>
           </div>
           <div className="mt-[70px]">
-            <h2 className="text-xl lg:text-2xl text-center lg:text-start font-bold mb-8">
+            <h2 className="text-xl lg:text-2xl  lg:text-start font-bold mb-8">
               مطالب مرتبط
             </h2>
             <div className="flex items-center justify-center flex-wrap gap-6">

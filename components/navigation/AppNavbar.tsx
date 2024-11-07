@@ -67,27 +67,27 @@ const AppNavbar = () => {
           </Link>
         </nav>
         <div className="flex items-center gap-2">
-          <Link href="https://t.me/vosooghi_studio" target="_blank">
-            <PulsatingButton className="h-[40px]">
+          <PulsatingButton className="h-[40px]">
+            <Link href="https://t.me/vosooghi_studio" target="_blank">
               <div className="w-full flex items-center gap-2">
                 <span className="">مشاوره رایگان</span>
                 <BiSupport size={17} />
               </div>
-            </PulsatingButton>
-          </Link>
+            </Link>
+          </PulsatingButton>
         </div>
       </div>
       <div className=" flex items-center  justify-between lg:hidden   rounded-full  px-5 h-[50px] z-50">
         <div className=" flex items-center relative justify-between w-full h-full">
           <div className=" absolute left-[10px]">
-            <Link href="https://t.me/vosooghi_studio" target="_blank">
-              <PulsatingButton className="h-[40px]">
+            <PulsatingButton className="h-[40px]">
+              <Link href="https://t.me/vosooghi_studio" target="_blank">
                 <div className="w-full flex items-center gap-2">
                   <span className="">مشاوره رایگان</span>
                   <BiSupport size={17} />
                 </div>
-              </PulsatingButton>
-            </Link>
+              </Link>
+            </PulsatingButton>
           </div>
           <Index />
         </div>

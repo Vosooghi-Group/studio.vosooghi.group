@@ -8,7 +8,8 @@
      .menu{
          width: 100%;
          height: 100%;
-         background-color:#d2dfcf;
+         background-color:#5b5b5b60;
+         backdrop-filter: blur(60px);
          border-radius: 10px;
          position: relative;
      }

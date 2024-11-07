@@ -26,7 +26,7 @@ export default function Button({
           <PerspectiveText
             label={
               <div className="flex items-center  justify-center text-black">
-                <TbMenu className="text-lg" />
+                <TbMenu className="text-lg text-white" />
               </div>
             }
           />
