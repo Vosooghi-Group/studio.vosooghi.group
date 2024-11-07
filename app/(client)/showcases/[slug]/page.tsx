@@ -36,7 +36,7 @@ export async function generateMetadata({
     };
   }
 
-  const imageUrl = showcase?.images?.asset?.url;
+  const imageUrl = urlFor(showcase.images[0]).url();
 
   return {
     title: `Vosooghi Studio | ${showcase?.title}` || "Vosooghi Studio",
@@ -51,7 +51,7 @@ export async function generateMetadata({
           url: imageUrl,
           width: 1200,
           height: 630,
-          alt: showcase?.images?.alt || "Showcase Image",
+          alt: showcase?.title || "Showcase Image",
         },
       ],
       type: "article",
@@ -197,14 +197,19 @@ const SingleShowcasePage = async ({ params }: Params) => {
             <div className="flex flex-col gap-10 lg:max-w-[500px]">
               <ShowcaseText delay={0.6}>
                 <div className="grid grid-cols-1 lg:grid-cols-2  gap-4 lg:gap-5">
-                  {showcase?.features?.map((feature: Feature , index : number) => (
-                    <div className="flex items-start gap-3 lg:gap-4" key={index}>
-                      <div className="text-md lg:text-lg">{feature.icon}</div>
-                      <div className="text-md lg:text-lg text-neutral-300">
-                        {feature.name}
+                  {showcase?.features?.map(
+                    (feature: Feature, index: number) => (
+                      <div
+                        className="flex items-start gap-3 lg:gap-4"
+                        key={index}
+                      >
+                        <div className="text-md lg:text-lg">{feature.icon}</div>
+                        <div className="text-md lg:text-lg text-neutral-300">
+                          {feature.name}
+                        </div>
                       </div>
-                    </div>
-                  ))}
+                    )
+                  )}
                 </div>
               </ShowcaseText>
               <ShowcaseText delay={0.7}>
