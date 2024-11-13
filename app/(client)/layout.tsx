@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
 import "./globals.css";
-
+import Head from "next/head";
 import { ThemeProvider } from "@/components/theme/theme-provier";
 import AppNavbar from "@/components/navigation/AppNavbar";
 // import { ConstructionBanner } from "@/components/ConstructionBanner";
 import { SessionProvider } from "next-auth/react";
 import { Footer } from "@/components/navigation/Footer";
-
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://studio.vosooghi.group/"),
@@ -35,6 +34,25 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fa" dir="rtl">
+      <Head>
+        {/* Add your ad script here */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              !function (t, e, n) {
+                  t.yektanetAnalyticsObject = n, t[n] = t[n] || function () {
+                      t[n].q.push(arguments)
+                  }, t[n].q = t[n].q || [];
+                  var a = new Date, r = a.getFullYear().toString() + "0" + a.getMonth() + "0" + a.getDate() + "0" + a.getHours(),
+                      c = e.getElementsByTagName("script")[0], s = e.createElement("script");
+                  s.id = "ua-script-0v2lE6Oq"; s.dataset.analyticsobject = n;
+                  s.async = 1; s.type = "text/javascript";
+                  s.src = "https://cdn.yektanet.com/rg_woebegone/scripts_v3/0v2lE6Oq/rg.complete.js?v=" + r, c.parentNode.insertBefore(s, c)
+              }(window, document, "yektanet");
+            `,
+          }}
+        />
+      </Head>
       <body className={`antialiased`}>
         <SessionProvider>
           <ThemeProvider
