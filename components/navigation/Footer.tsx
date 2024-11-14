@@ -13,11 +13,10 @@ import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { IoLogoLinkedin } from "react-icons/io";
 
-
 export const Footer = () => {
   return (
     <div id="contact" className="w-full h-full ">
-      <div className="flex flex-col gap-4 w-full lg:h-[570px] p-5">
+      <div className="flex flex-col gap-4 w-full lg:h-[570px] px-5">
         <div className="flex items-center justify-center gap-4 w-full">
           <span className="w-[30%] lg:w-[42%] bg-gradient-to-tr from-neutral-900/10 to-neutral-700/50 h-[1.2px] lg:h-[1.5px]"></span>
 
@@ -98,7 +97,13 @@ export const Footer = () => {
               <div className="flex flex-col gap-4">
                 <div className="flex items-center gap-3">
                   <FaPhone className="text-[#01C466]" />
-                  <span>0992 666 7069</span>
+                  <span>0992-666-7069</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <BiLogoTelegram className="text-[#01C466]" />
+                  <Link target="_blank" href="https://t.me/vosooghi_studio">
+                    vosooghi_studio@
+                  </Link>
                 </div>
                 <div className="flex items-center gap-3">
                   <CgMail className="text-[#01C466]" />
@@ -108,21 +113,27 @@ export const Footer = () => {
             </div>
           </div>
           <div className="flex flex-col h-full justify-between gap-8 w-full lg:w-1/3 lg:border-x-[0.8px] border-neutral-700/60 px-6">
-            <p className="text-xs lg:text-sm max-w-[96%] lg:max-w-[400px]  leading-6 lg:leading-8 tracking-wider lg:mt-10">
+            <p className="text-xs lg:text-sm max-w-full lg:max-w-[400px]  leading-6 lg:leading-8 tracking-wider lg:mt-10">
               ما در استودیو وثوقی با ارائه خدمات حرفه‌ای دیجیتال مارکتینگ و
               برندینگ، به کسب‌وکارها کمک می‌کنیم تا جایگاه خود را در دنیای
               دیجیتال پیدا کنند. با طراحی استراتژی‌های نوآورانه و منحصر به فرد،
               همراه شما در مسیر موفقیت برندتان خواهیم بود.
             </p>
             <div className="flex items-center justify-center gap-5">
-              <Link target="_blank" href="https://www.linkedin.com/company/vosooghi-studio/">
+              <Link
+                target="_blank"
+                href="https://www.linkedin.com/company/vosooghi-studio/"
+              >
                 <IoLogoLinkedin size={20} className="text-neutral-400" />
               </Link>
-              <Link target="_blank" href="https://www.instagram.com/vosooghi.studio/">
+              <Link
+                target="_blank"
+                href="https://www.instagram.com/vosooghi.studio/"
+              >
                 <FaInstagram size={20} className="text-neutral-400" />
               </Link>
               <Link
-              target="_blank"
+                target="_blank"
                 href="https://t.me/vosooghi_studio"
                 className="flex flex-col gap-2 items-center justify-start mb-[-32px] "
               >
@@ -183,7 +194,7 @@ export const Footer = () => {
             </div>
           </div>
         </div>
-        <div className=" border-t-[0.8px] border-neutral-800 mt-5 pt-5">
+        <div className=" border-t-[0.8px] border-neutral-800 mt-5 mb-5 pt-5">
           <p className="text-neutral-400 text-center text-xs lg:text-sm">
             کلیه حقوق این وبسایت متعلق به استودیو وثوقی می باشد.
           </p>

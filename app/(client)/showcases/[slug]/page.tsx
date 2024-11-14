@@ -112,40 +112,7 @@ const SingleShowcasePage = async ({ params }: Params) => {
       className="w-full min-h-screen py-5 px-5 lg:px-10 max-w-[1660px] mx-auto"
     >
       <div className="w-full mb-[100px] flex flex-col gap-[50px] lg:gap-[100px] ">
-        {/* <ShowcasesNavigation /> */}
-        <div className="flex flex-col lg:flex-row items- justify-center gap-10 mt-[140px] lg:mt-[250px] w-full lg:w-[85%] mx-auto min-h-[300px] 2xl:min-h-[500px] max-w-[1200px]">
-          <div className="w-full lg:w-1/2">
-            <ShowcaseText delay={0.2}>
-              <h1 className="text-3xl lg:text-6xl font-bold text-white">
-                {showcase.title}
-              </h1>
-            </ShowcaseText>
-          </div>
-          <div className="flex flex-col gap-5 w-full lg:w-1/2">
-            <div>
-              <ShowcaseText delay={0.8}>
-                <div className="flex flex-col gap-5">
-                  <div className="flex items-center gap-2">
-                    <Badge className="" variant="secondary">
-                      طراحی سایت
-                    </Badge>
-                    <Badge className="" variant="secondary">
-                      سعو
-                    </Badge>
-                    <Badge className="" variant="secondary">
-                      مارکتینگ
-                    </Badge>
-                  </div>
-
-                  <p className="text-[14px] lg:text-[17px] leading-7 lg:leading-8 text-neutral-300/80 sm:max-w-[85%] font-medium tracking-wider">
-                    {showcase.description}
-                  </p>
-                </div>
-              </ShowcaseText>
-            </div>
-          </div>
-        </div>
-        <div className="flex flex-col gap-8 ">
+        <div className="flex flex-col gap-8 mt-10">
           <ShowCasesTopImage
             src={urlFor(showcase.images[0]).url()}
             classname=""
@@ -186,51 +153,66 @@ const SingleShowcasePage = async ({ params }: Params) => {
             </div>
           </div>
         </ShowcaseText>
-        <div className="w-full lg:w-[85%] mx-auto my-[50px] lg:my-[100px]">
-          <div className="flex items- flex-col gap-8 lg:flex-row justify-between">
-            <ShowcaseText delay={0.1}>
-              <h1 className="text-3xl lg:text-6xl font-bold text-white flex items-center gap-2">
-                <span>درباره</span>
-                {showcase.title}
-              </h1>
+        <div className="flex flex-col lg:flex-row items- justify-center gap-10 mt-[40px] lg:mt-[50px] w-full lg:w-[85%] mx-auto min-h-[300px] 2xl:min-h-[500px] max-w-[1200px]">
+          <div className="w-full lg:w-1/2">
+            <ShowcaseText delay={0.2}>
+              <div className="flex flex-col gap-6 lg:gap-10">
+                <h1 className="text-3xl lg:text-6xl font-bold text-white">
+                  {showcase.title}
+                </h1>
+                <ShowcaseText delay={0.7}>
+                  <div className="flex flex-cl gap-2 lg:gap-4">
+                    <Link href={showcase.instagram} target="_blank">
+                      <Button className="text-white flex items-center gap-2">
+                        <FaInstagram />
+                        <span>مشاهده در اینستاگرام</span>
+                      </Button>
+                    </Link>
+                    <Link href={showcase.website} target="_blank">
+                      <Button className="flex items-center gap-2 bg-neutral-800 text-white ">
+                        <TbWorld />
+                        <span>مشاهده وبسایت</span>
+                      </Button>
+                    </Link>
+                  </div>
+                </ShowcaseText>
+              </div>
             </ShowcaseText>
-            <div className="flex flex-col gap-10 lg:max-w-[500px]">
-              <ShowcaseText delay={0.6}>
-                <div className="grid grid-cols-1 lg:grid-cols-2  gap-4 lg:gap-5">
-                  {showcase?.features?.map(
-                    (feature: Feature, index: number) => (
-                      <div
-                        className="flex items-start gap-3 lg:gap-4"
-                        key={index}
-                      >
-                        <div className="text-md lg:text-lg">{feature.icon}</div>
-                        <div className="text-md lg:text-lg text-neutral-300">
-                          {feature.name}
-                        </div>
+          </div>
+          <div className="flex flex-col gap-5 w-full lg:w-1/2">
+            <div>
+              <ShowcaseText delay={0.8}>
+                <div className="flex flex-col gap-5">
+                  <p className="text-[14px] lg:text-[17px] leading-7 lg:leading-8 text-neutral-300/80 sm:max-w-[85%] font-medium tracking-wider">
+                    {showcase.description}
+                  </p>
+                  <div className="flex flex-col gap-5 lg:max-w-[500px] mt-6">
+                    <ShowcaseText delay={0.6}>
+                      <div className="grid grid-cols-1 lg:grid-cols-2  gap-4 lg:gap-5">
+                        {showcase?.features?.map(
+                          (feature: Feature, index: number) => (
+                            <div
+                              className="flex items-start gap-3 lg:gap-4"
+                              key={index}
+                            >
+                              <div className="text-sm lg:text-md">
+                                {feature.icon}
+                              </div>
+                              <div className="text-sm lg:text-md text-neutral-300">
+                                {feature.name}
+                              </div>
+                            </div>
+                          )
+                        )}
                       </div>
-                    )
-                  )}
-                </div>
-              </ShowcaseText>
-              <ShowcaseText delay={0.7}>
-                <div className="flex flex- gap-4">
-                  <Link href={showcase.instagram} target="_blank">
-                    <Button className="text-white flex items-center gap-2">
-                      <FaInstagram />
-                      <span>مشاهده در اینستاگرام</span>
-                    </Button>
-                  </Link>
-                  <Link href={showcase.website} target="_blank">
-                    <Button className="flex items-center gap-2 bg-neutral-900 text-white ">
-                      <TbWorld />
-                      <span>مشاهده وبسایت</span>
-                    </Button>
-                  </Link>
+                    </ShowcaseText>
+                  </div>
                 </div>
               </ShowcaseText>
             </div>
           </div>
         </div>
+
         <div className="mt-[70px] w-full flex flex-col gap-7 lg:gap-10">
           <h1 className="text-xl lg:text-3xl font-bold text-white">
             پروژه های مشابه
@@ -247,7 +229,8 @@ const SingleShowcasePage = async ({ params }: Params) => {
                     alt={relatedShowcase.title}
                     width={250}
                     height={150}
-                    className="object-cover shadow-lg mb-2 min-w-[300px] lg:min-w-[500px] "
+                    priority
+                    className="object-cover shadow-lg mb-2 min-w-[300px] lg:min-w-[500px] rounded-lg"
                   />
                   <div className="mt-3 flex flex-col gap-2">
                     <h1 className="text-sm lg:text-lg font-bold">
@@ -261,9 +244,6 @@ const SingleShowcasePage = async ({ params }: Params) => {
               ))}
           </div>
         </div>
-        {/* <div className="w-full h-[400px] ">
-          <ShowcasesFooter />
-        </div> */}
       </div>
     </div>
   );

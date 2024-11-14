@@ -42,9 +42,9 @@ export const links = [
          icon : <FaInstagram size={20} />
      },
      {
-         title: "9926667069",
+         title: "992-666-7069",
          href: "/",
-         icon : <FaPhoneAlt size={18} />
+         icon : ""
      },
      
  ]

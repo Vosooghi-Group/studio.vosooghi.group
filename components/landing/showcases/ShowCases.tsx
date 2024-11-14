@@ -37,7 +37,7 @@ export const ShowCases = async () => {
               همه نمونه کارهای ما رو میتونید از گالریمون ببینید!
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:flex  lg:flex-row lg:gap-8 w-full overflow-x-auto lg:px-10 2xl:justify-center">
+          <div className="w-full flex items-center justify-center flex-col lg:grid lg:grid-cols-2 gap-2 lg:max-w-[1100px]">
             {showcases.map((showcase: ShowcaseType) => (
               <ShowcaseCard Showcase={showcase} key={showcase._id} />
             ))}

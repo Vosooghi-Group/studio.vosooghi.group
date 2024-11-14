@@ -19,7 +19,7 @@ export const BlogCard = ({ blog }: BlogCardProps) => {
   const publishedAtPersian = convertToJalaali(blog.publishedAt);
 
   return (
-    <Card className="  bg-transparent border-none p-0 min-w-[280px] md:min-w-[450px] max-h-[450px]  rounded-t-2xl rounded-b-none relative">
+    <Card className=" bg-transparent border-none p-0 min-w-[280px] md:min-w-[450px] max-h-[450px] max-w-[500px]  rounded-t-2xl rounded-b-none relative">
       <Link href={`/blogs/${blog.slug.current}`}>
         <div className="  flex flex-col w-full h-full ">
           <Image

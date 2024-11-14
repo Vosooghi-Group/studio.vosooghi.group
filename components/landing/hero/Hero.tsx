@@ -4,6 +4,7 @@ import Image from "next/image";
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { Montserrat } from "next/font/google";
+import Link from "next/link";
 
 const montserrat = Montserrat({
   weight: ["400", "700"], // Choose weights you need (e.g., 400 for regular, 700 for bold)
@@ -21,6 +22,7 @@ const HeroSection = () => {
             alt=""
             width={500}
             height={500}
+            priority
             className="w-full object-cover h-[300px] lg:h-[450px] 2xl:h-[530px] lg:rounded-br-3xl"
           />
           <div className="flex items-start justify-normal flex-col gap-3 absolute bottom-10 right-10 lg:bottom-[60px] lg:right-[60px]">
@@ -29,8 +31,12 @@ const HeroSection = () => {
             >
               MARKETING
             </h1>
-            <p className="text-md lg:text-xl text-neutral-300">خدمات مارکتینگ</p>
-            <Button variant="secondary" className="lg:text-lg px-6 py-4">ثبت درخواست</Button>
+            <p className="text-md lg:text-xl text-neutral-300">
+              خدمات مارکتینگ
+            </p>
+            <Button variant="secondary" className="lg:text-lg px-6 py-4">
+              <Link href="/#contact">ثبت درخواست</Link>
+            </Button>
           </div>
         </div>
         <div className="relative w-full">
@@ -39,6 +45,7 @@ const HeroSection = () => {
             alt=""
             width={500}
             height={500}
+            priority
             className="w-full object-cover h-[300px] lg:h-[450px] 2xl:h-[530px] rounded-b-3xl lg:rounded-bl-3xl"
           />
           <div className="flex items-end justify-end flex-col gap-3 absolute bottom-10 left-10 lg:bottom-[60px] lg:left-[60px]">
@@ -48,7 +55,9 @@ const HeroSection = () => {
               BRANDING
             </h1>
             <p className="text-md lg:text-xl text-neutral-300">خدمات برندینگ</p>
-            <Button variant="secondary"  className="lg:text-lg px-6 py-4">ثبت درخواست</Button>
+            <Button variant="secondary" className="lg:text-lg px-6 py-4">
+              <Link href="/#contact">ثبت درخواست</Link>
+            </Button>
           </div>
         </div>
       </div>

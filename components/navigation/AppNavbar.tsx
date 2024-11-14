@@ -37,6 +37,7 @@ const AppNavbar = () => {
             src={TopLogo}
             width={500}
             height={300}
+            priority
             className="mx-auto w-[150px] lg:w-[170px]"
           />
         </div>

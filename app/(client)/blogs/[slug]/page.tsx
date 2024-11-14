@@ -88,7 +88,7 @@ async function getBlog(slug: string) {
 }
 async function getSimilarBlogs(slug: string) {
   const query = `
-    *[_type == "blog" && slug.current != "${slug}"] | order(publishedAt desc) [0...4] {
+    *[_type == "blog" && slug.current != "${slug}"] | order(publishedAt desc) [0...2] {
       title,
       slug,
       publishedAt,
@@ -210,8 +210,8 @@ const SingleBlogPage = async ({ params }: Params) => {
               />
             </div>
           </div>
-          <div className="mt-[70px]">
-            <h2 className="text-xl lg:text-2xl  lg:text-start font-bold mb-8">
+          <div className="my-[170px]">
+            <h2 className="text-2xl lg:text-3xl  lg:text-start font-bold mb-[50px]">
               مطالب مرتبط
             </h2>
             <div className="flex items-center justify-center flex-wrap gap-6">
